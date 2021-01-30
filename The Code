@@ -1,0 +1,96 @@
+numForLayout= 60
+
+print ("Welcome to Nethara's Fraction Reducer!")
+print("-"*numForLayout)
+
+while True:
+  yourNum = int(input("Enter the numerator: "))
+  yourDen = int(input("Enter the denominator: "))
+
+  print("-"*numForLayout)
+
+  #SPECIAL CASES
+
+  if yourDen == 0:
+    print("This fraction is undefined")
+
+    print("-"*numForLayout)
+
+  elif yourNum == 0:
+    print("This fraction equals", 0)
+
+  elif yourDen < 0:
+    print ("This fraction reducer can't deal with negatives")
+
+  elif yourNum <0:
+    print ("This fraction reducer can't handle negatives")
+
+    print("-"*numForLayout)
+
+  elif yourDen == 1:
+    print("The answer is", yourNum)
+
+  elif yourNum == 1:
+    print("The answer is", str(yourNum) + "/" + str(yourDen))
+
+  else:
+
+    #EUCLIDS ALGORITHM
+
+    if yourNum < yourDen:
+      Min = yourNum
+      Max = yourDen
+
+    else:
+      Min = yourDen
+      Max = yourNum
+
+    Remainder = Max % Min
+    GCD = Min
+
+    #REDUCED FRACTION DENOMINATOR OF 1 AND REDUCED FRACTION 1/2
+
+    if Remainder == 0:
+      Areduced = yourNum / GCD
+      Breduced = yourDen / GCD
+
+      #REDUCED FRACTION 1/2
+      if Areduced == 1:
+        print("The reduced fraction of", str(yourNum) + "/" + str(yourDen), "is", int(Areduced), "/", int(Breduced))
+
+        print("-"*numForLayout)
+
+      #REDUCED FRACTION DENOMINATOR OF 1
+
+      else:
+        answer = yourNum / yourDen
+        print("The reduced fraction of", str(yourNum) + "/" + str(yourDen), "is", int(answer))
+
+        print("-"*numForLayout)
+
+    #REDUCED FRACTION AND ALREADY REDUCED
+
+    else:
+      while Remainder > 0:
+        Max = Min
+        Min = Remainder
+        Remainder = Max % Min
+      GCD = Min
+
+      #ALREADY REDUCED FRACTION
+
+      if GCD == 1:
+        print(str(yourNum) + "/" + str(yourDen), "is already in reduced form")
+
+      #REDUCED FRACTION
+
+      else:
+        GCD = Min
+        Areduced = yourNum / GCD
+        Breduced = yourDen / GCD
+
+        #CONCLUSION
+        print("The reduced fraction of", str(yourNum) + "/" + str(yourDen), "is", int(Areduced), "/", int(Breduced))
+
+ 
+
